@@ -43,7 +43,7 @@ class WechatAccessToken extends Command
         $env_path = base_path('.env');
         $patterns = $replacements = [];
 
-        $patterns[0] = "/WECHAT_ACCESS_TOKEN=([\S]+)/";
+        $patterns[0] = "/WECHAT_ACCESS_TOKEN=([\S]*)/";
         $replacements[0] = "WECHAT_ACCESS_TOKEN=".$access_token;
 
         if (!file_exists($env_path)) {
