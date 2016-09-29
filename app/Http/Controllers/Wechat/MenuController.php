@@ -8,6 +8,23 @@ use App\Http\Controllers\Controller;
 
 class MenuController extends Controller
 {
+    public function index()
+    {
+        $access_token = env('WECHAT_ACCESS_TOKEN');
+        $wechat_url = "https://api.weixin.qq.com/cgi-bin/menu/get?access_token=".$access_token;
+        $client = new Client();
+        $response = $client->request('GET', $wechat_url);
+
+        if ($response->getStatusCode() != 200) {
+            return;
+        }
+
+        $response_content = $response->getBody()->getContents();
+        $response_arr = json_decode($response_content, true);
+
+        return response()->json(['data' => $response_arr]);
+    }
+
     public function create()
     {
         $access_token = env('WECHAT_ACCESS_TOKEN');
