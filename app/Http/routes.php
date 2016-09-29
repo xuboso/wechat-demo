@@ -16,3 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/wechat/validate', 'WechatController@checkValidate')->name('wechatValidate');
+
+Route::group(['namespace' => 'Wechat'], function() {
+    Route::get('/wechat/menu', 'MenuController@create');
+});
