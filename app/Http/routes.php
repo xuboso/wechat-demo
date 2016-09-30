@@ -15,8 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/wechat/validate', 'WechatController@checkValidate')->name('wechatValidate');
+Route::get('/wechat', 'WechatController@checkValidate')->name('wechatValidate');
+Route::post('/wechat', 'WechatController@process');
 
 Route::group(['namespace' => 'Wechat'], function() {
     Route::resource('/wechat/menus', 'MenuController');
+    Route::get('wechat/generate', 'QrcodeController@generate');
 });
