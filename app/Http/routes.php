@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/wechat', 'WechatController@checkValidate')->name('wechatValidate');
-Route::post('/wechat', 'WechatController@process');
+Route::post('/wechat', 'WechatController@reply');
 
 Route::group(['namespace' => 'Wechat'], function() {
     Route::resource('/wechat/menus', 'MenuController');
